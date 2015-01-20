@@ -4,3 +4,4 @@
 /.project
 /.idea
 /atlassian-ide-plugin.xml
+*.iml
