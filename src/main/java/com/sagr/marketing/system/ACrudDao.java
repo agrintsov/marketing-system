@@ -90,16 +90,15 @@ public abstract class ACrudDao<T> {
         }
     }
 
-    public User find() {
-        Session session = null;
+    public List<T> find(Session session, Criteria criteria) {
+        List<T> entities;
         try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(entityClass);
+            entities = criteria.list();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
-        return null;
+        return entities;
     }
 }
