@@ -1,6 +1,5 @@
 package com.sagr.marketing.system;
 
-import com.sagr.marketing.system.user.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -90,9 +89,12 @@ public abstract class ACrudDao<T> {
         }
     }
 
-    public List<T> find(Session session, Criteria criteria) {
+    public List<T> find(CriteriaMaker criteriaMaker) {
+        Session session = null;
         List<T> entities;
         try {
+            session = sessionFactory.openSession();
+            Criteria criteria = criteriaMaker.make(session);
             entities = criteria.list();
         } finally {
             if (session != null && session.isOpen()) {
@@ -100,5 +102,9 @@ public abstract class ACrudDao<T> {
             }
         }
         return entities;
+    }
+
+    protected interface CriteriaMaker {
+        Criteria make(Session session);
     }
 }

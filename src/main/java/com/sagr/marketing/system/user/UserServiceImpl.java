@@ -39,22 +39,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean registerNewUser(String login, String password) {
-        return false;
+    public boolean registerNewUser(User user, String password) {
+        if (userDao.getUserByLogin(user.getLogin()) != null)
+            return false;
+        String passwordHash = generatePasswordHash(user.getLogin(), password);
+        user.setPasswordHash(passwordHash);
+        add(user);
+        return true;
     }
 
-    public String generatePasswordHash(String login, String password) throws Exception {
+    @Override
+    public User getUserByLogin(String login) {
+        return userDao.getUserByLogin(login);
+    }
+
+    public String generatePasswordHash(String login, String password){
         String plainText = login + password + "bla";
-        MessageDigest md = null;
+        MessageDigest md;
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException e) {
-            throw new Exception(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
         try {
             md.update(plainText.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
-            throw new Exception(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
         byte raw[] = md.digest();
         String hash = (new BASE64Encoder()).encode(raw);
