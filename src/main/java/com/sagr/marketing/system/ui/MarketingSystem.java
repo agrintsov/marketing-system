@@ -1,6 +1,8 @@
 package com.sagr.marketing.system.ui;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,12 +15,11 @@ public class MarketingSystem extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Marketing System");
-        LoginSceneCreator loginSceneCreator = new LoginSceneCreator();
-        Scene loginScene = loginSceneCreator.create();
+    public void start(Stage primaryStage) throws Exception {
+        Parent loginFxml = FXMLLoader.load(getClass().getClassLoader().getResource("view/login.fxml"));
 
-        primaryStage.setScene(loginScene);
+        primaryStage.setTitle("Marketing System");
+        primaryStage.setScene(new Scene(loginFxml, 300, 275));
         primaryStage.show();
     }
 }
