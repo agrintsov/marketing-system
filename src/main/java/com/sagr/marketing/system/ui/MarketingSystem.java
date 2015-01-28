@@ -16,7 +16,7 @@ public class MarketingSystem extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent loginFxml = FXMLLoader.load(getClass().getClassLoader().getResource("view/login.fxml"));
+        Parent loginFxml = FXMLLoader.load(getClass().getClassLoader().getResource("view/registration.fxml"));
 
         primaryStage.setTitle("Marketing System");
         primaryStage.setScene(new Scene(loginFxml, 300, 275));
