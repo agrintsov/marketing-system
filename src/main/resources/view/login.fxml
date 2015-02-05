@@ -2,8 +2,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-
 <?import javafx.scene.text.Text?>
+
 <GridPane fx:id="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.sagr.marketing.system.ui.controller.Login"
           alignment="center" hgap="10" vgap="10">
     <padding>
@@ -15,10 +15,10 @@
             wrapText="true" prefWidth="350" textAlignment="CENTER"/>
 
     <Label text="Логін:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="loginField"/>
 
     <Label text="Пароль:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="passwordField"/>
 
     <Button text="Ввійти" GridPane.columnIndex="0" GridPane.rowIndex="4" onAction="#login"/>
 

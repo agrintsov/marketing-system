@@ -10,7 +10,8 @@ public class FxmlMapProvider {
 
     public static final String LOGIN_SCENE_NAME = "login";
     public static final String REGISTRATION_SCENE_NAME = "registration";
-    public static final String DATA_EDITING_SCENE_NAME = "dataEditing";
+    public static final String MAIN_MENU_SCENE_NAME = "mainMenu";
+    public static final String EDITING_DATA_MENU_SCENE_NAME = "editingDataMenu";
     public static final String EDIT_PERSONAL_DATA_SCENE_NAME = "editPersonalData";
 
     private static Map<String, String> sceneFxml;
@@ -20,7 +21,8 @@ public class FxmlMapProvider {
         sceneFxml = new HashMap<String, String>();
         sceneFxml.put(REGISTRATION_SCENE_NAME, "/view/registration.fxml");
         sceneFxml.put(LOGIN_SCENE_NAME, "/view/login.fxml");
-        sceneFxml.put(DATA_EDITING_SCENE_NAME, "/view/dataEditing.fxml");
+        sceneFxml.put(MAIN_MENU_SCENE_NAME, "/view/mainMenu.fxml");
+        sceneFxml.put(EDITING_DATA_MENU_SCENE_NAME, "/view/editingDataMenu.fxml");
         sceneFxml.put(EDIT_PERSONAL_DATA_SCENE_NAME, "/view/editPersonalData.fxml");
     }
 

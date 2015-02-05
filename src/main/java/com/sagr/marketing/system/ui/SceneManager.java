@@ -15,10 +15,12 @@ import java.util.Map;
 public class SceneManager implements ISceneManager {
     private Stage primaryStage;
     private Map<String, String> sceneFxml;
+    private FXMLLoader loader;
 
-    public SceneManager(Stage primaryStage, Map<String, String> sceneFxml) {
+    public SceneManager(Stage primaryStage, Map<String, String> sceneFxml, FXMLLoader loader) {
         this.primaryStage = primaryStage;
         this.sceneFxml = sceneFxml;
+        this.loader = loader;
     }
 
     @Override
@@ -37,7 +39,6 @@ public class SceneManager implements ISceneManager {
     }
 
     private Parent loadParent(String fxml) {
-        FXMLLoader loader = new FXMLLoader();
         Parent parent;
         try {
             parent = loader.load(getClass().getResource(fxml).openStream());
