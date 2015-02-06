@@ -15,6 +15,6 @@ public class GuiceControllerFactory implements Callback<Class<?>, Object> {
     }
 
     public Object call(Class<?> param) {
-        return null;
+        return injector.getInstance(param);
     }
 }

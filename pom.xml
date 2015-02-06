@@ -20,6 +20,7 @@
             <artifactId>guice</artifactId>
             <version>3.0</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -50,7 +51,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.sagr.marketing.system.ui.MarketingSystem</mainClass>
+                            <mainClass>com.sagr.marketing.system.MarketingSystem</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,5 +1,6 @@
 package com.sagr.marketing.system.ui.controller;
 
+import com.google.inject.Inject;
 import com.sagr.marketing.system.ui.ISceneManager;
 
 /**
@@ -7,6 +8,11 @@ import com.sagr.marketing.system.ui.ISceneManager;
  */
 public class DataEditing implements ISceneController {
     private ISceneManager sceneManager;
+
+    @Inject
+    public DataEditing(ISceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 
     @Override
     public void setSceneManager(ISceneManager sceneManager) {

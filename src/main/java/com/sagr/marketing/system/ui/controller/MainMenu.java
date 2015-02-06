@@ -1,5 +1,6 @@
 package com.sagr.marketing.system.ui.controller;
 
+import com.google.inject.Inject;
 import com.sagr.marketing.system.ui.FxmlMapProvider;
 import com.sagr.marketing.system.ui.ISceneManager;
 import javafx.event.ActionEvent;
@@ -9,6 +10,11 @@ import javafx.event.ActionEvent;
  */
 public class MainMenu implements ISceneController {
     private ISceneManager sceneManager;
+
+    @Inject
+    public MainMenu(ISceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 
     @Override
     public void setSceneManager(ISceneManager sceneManager) {

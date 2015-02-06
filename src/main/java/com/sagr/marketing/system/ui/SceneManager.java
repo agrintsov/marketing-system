@@ -1,10 +1,13 @@
 package com.sagr.marketing.system.ui;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.sagr.marketing.system.ui.controller.ISceneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.Map;
@@ -15,12 +18,13 @@ import java.util.Map;
 public class SceneManager implements ISceneManager {
     private Stage primaryStage;
     private Map<String, String> sceneFxml;
-    private FXMLLoader loader;
+    private Callback<Class<?>, Object> controllerFactory;
 
-    public SceneManager(Stage primaryStage, Map<String, String> sceneFxml, FXMLLoader loader) {
+    @Inject
+    public SceneManager(Stage primaryStage, @Named("sceneFxml")Map<String, String> sceneFxml, Callback<Class<?>, Object> controllerFactory) {
         this.primaryStage = primaryStage;
         this.sceneFxml = sceneFxml;
-        this.loader = loader;
+        this.controllerFactory = controllerFactory;
     }
 
     @Override
@@ -39,14 +43,14 @@ public class SceneManager implements ISceneManager {
     }
 
     private Parent loadParent(String fxml) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setControllerFactory(controllerFactory);
         Parent parent;
         try {
             parent = loader.load(getClass().getResource(fxml).openStream());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        ISceneController controller = loader.getController();
-        controller.setSceneManager(this);
         return parent;
     }
 }
