@@ -13,4 +13,6 @@ public interface IUserService {
     User get(String login);
     boolean registerNewUser(User user, String password);
     User getUserByLogin(String login);
+    boolean signIn(String login, String password);
+    User getCurrentUser();
 }

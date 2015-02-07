@@ -35,7 +35,10 @@ public class Login implements ISceneController {
     public void login(ActionEvent actionEvent) {
         actionStatus.setFill(Color.BLUE);
         actionStatus.setText("Sign in button pressed");
-        System.out.println(loginField.getText() + " : " + passwordField.getText());
+        String login = loginField.getText();
+        String password = passwordField.getText();
+
+        System.out.println(login + " : " + password);
         sceneManager.setScene(FxmlMapProvider.MAIN_MENU_SCENE_NAME);
     }
 
