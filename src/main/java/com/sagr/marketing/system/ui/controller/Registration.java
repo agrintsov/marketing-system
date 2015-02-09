@@ -50,6 +50,8 @@ public class Registration implements ISceneController {
         String login = loginField.getText();
         String password = passwordField.getText();
         User newUser = new User(name, secondName, organization, login, null);
-        userService.registerNewUser(newUser, password);
+        if (userService.registerNewUser(newUser, password)) {
+            sceneManager.setScene(FxmlMapProvider.LOGIN_SCENE_NAME);
+        }
     }
 }

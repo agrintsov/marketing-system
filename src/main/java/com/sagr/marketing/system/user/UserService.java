@@ -30,22 +30,22 @@ public class UserService implements IUserService {
 
     @Override
     public void update(User user) {
-
+        userDao.update(user);
     }
 
     @Override
     public User getById(Integer id) {
-        return null;
+        return userDao.getById(id);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userDao.getAll();
     }
 
     @Override
     public User get(String login) {
-        return null;
+        return userDao.getUserByLogin(login);
     }
 
     @Override

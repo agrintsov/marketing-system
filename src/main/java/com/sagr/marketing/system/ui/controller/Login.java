@@ -33,18 +33,30 @@ public class Login implements ISceneController {
     }
 
     public void login(ActionEvent actionEvent) {
-        actionStatus.setFill(Color.BLUE);
-        actionStatus.setText("Sign in button pressed");
         String login = loginField.getText();
         String password = passwordField.getText();
 
-        System.out.println(login + " : " + password);
+        if (login.isEmpty()) {
+            actionStatus.setFill(Color.BLUE);
+            actionStatus.setText("Введіть логін");
+            return;
+        }
+
+        if (password.isEmpty()) {
+            actionStatus.setFill(Color.BLUE);
+            actionStatus.setText("Введіть пароль");
+            return;
+        }
+
+        if (!userService.signIn(login, password)) {
+            actionStatus.setFill(Color.BLUE);
+            actionStatus.setText("Ви ввели неправильний логін або пароль");
+            return;
+        }
         sceneManager.setScene(FxmlMapProvider.MAIN_MENU_SCENE_NAME);
     }
 
     public void register(ActionEvent actionEvent) {
-        /*actionStatus.setFill(Color.BLACK);
-        actionStatus.setText("Registration button pressed");*/
         sceneManager.setScene(FxmlMapProvider.REGISTRATION_SCENE_NAME);
     }
 

@@ -40,9 +40,9 @@ public class MarketingSystemModule extends AbstractModule {
     @Provides
     @Singleton
     public UserDaoImpl provideUserDaoImpl() {
-        /*SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        UserDaoImpl userDao = new UserDaoImpl(sessionFactory);*/
-        return new UserDaoImpl(null);
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        UserDaoImpl userDao = new UserDaoImpl(sessionFactory);
+        return userDao;
     }
 
     @Provides
