@@ -6,11 +6,11 @@ import com.sagr.marketing.system.ui.ISceneManager;
 /**
  * @author AGrintsov
  */
-public class Customer implements ISceneController {
+public class EditCustomerData implements ISceneController {
     private ISceneManager sceneManager;
 
     @Inject
-    public Customer(ISceneManager sceneManager) {
+    public EditCustomerData(ISceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
 

@@ -10,6 +10,9 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
+import com.sagr.marketing.system.customer.CustomerDao;
+import com.sagr.marketing.system.customer.CustomerService;
+import com.sagr.marketing.system.customer.ICustomerService;
 import com.sagr.marketing.system.ui.FxmlMapProvider;
 import com.sagr.marketing.system.ui.ISceneManager;
 import com.sagr.marketing.system.ui.SceneManager;
@@ -32,6 +35,7 @@ public class MarketingSystemModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(IUserService.class).to(UserService.class).in(Singleton.class);
+        bind(ICustomerService.class).to(CustomerService.class).in(Singleton.class);
         bind(ISceneManager.class).to(SceneManager.class).in(Singleton.class);
         bind(new TypeLiteral<Map<String, String>>() {
         }).annotatedWith(Names.named("sceneFxml")).toInstance(FxmlMapProvider.getSceneFxmlMap());
@@ -60,6 +64,15 @@ public class MarketingSystemModule extends AbstractModule {
     public Callback<Class<?>, Object> provideControllerFactory() {
         return controllerFactory;
     }
+
+    @Provides
+    @Singleton
+    public CustomerDao provideCustomerDao() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        CustomerDao customerDao = new CustomerDao(sessionFactory);
+        return customerDao;
+    }
+
 
     public void setControllerFactory(Callback<Class<?>, Object> controllerFactory) {
         this.controllerFactory = controllerFactory;

@@ -2,6 +2,9 @@ package com.sagr.marketing.system.customer;
 
 import com.google.inject.Inject;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +35,19 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public List<Customer> getAll() {
-        return customerDao.getAll();
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        Customer customer = new Customer();
+        customer.setFirstName("firstName1");
+        customer.setLastName("lastName1");
+        customer.setOrganisation("organisation1");
+        Calendar cal = Calendar.getInstance();
+        customer.setBirthDate(new Date(cal.getTimeInMillis()));
+        customer.setPhone("phone1");
+        customer.setReceivingCardDate(new Date(cal.getTimeInMillis()));
+        customer.setEmail("email");
+        customer.setDiscountAmount(5);
+        customers.add(customer);
+        return customers;
+        //return customerDao.getAll();
     }
 }

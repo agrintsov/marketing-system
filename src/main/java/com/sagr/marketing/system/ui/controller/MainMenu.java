@@ -26,7 +26,7 @@ public class MainMenu implements ISceneController {
     }
 
     public void editMarketingInformation(ActionEvent actionEvent) {
-        sceneManager.setScene(FxmlMapProvider.LOGIN_SCENE_NAME);
+        sceneManager.setScene(FxmlMapProvider.EDITING_DATA_MENU_SCENE_NAME);
     }
 
     public void findDependencies(ActionEvent actionEvent) {
